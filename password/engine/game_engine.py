@@ -35,17 +35,11 @@ def _read_user_attempt():
 def _analyse_attempt(random_password, chave):
 
     def is_colour_and_position_right(n):
-        found = False
-        if random_password[n] == chv[n]:
-            chv[n] = ''
-            found = True
-
-        return found
- 
+        return random_password[n] == chave[n]
+        
     def is_colour_right(n):
-        return chv[n] in random_password and random_password[n] != chv[n]
+        return chave[n] in random_password and random_password[n] != chave[n]
 
-    chv = chave[:]
     return [PINO_PRETO for n in range(4) if is_colour_and_position_right(n)] + \
            [PINO_BRANCO for n in range(4) if is_colour_right(n)]
 
