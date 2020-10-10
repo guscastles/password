@@ -3,3 +3,6 @@
 
 # IDE setup
 .vscode/
+
+# Cache files
+**/__pycache__/
