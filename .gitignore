@@ -3,6 +3,7 @@
 
 # IDE setup
 .vscode/
+*.code-workspace
 
 # Cache files
 **/__pycache__/
