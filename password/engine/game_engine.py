@@ -16,7 +16,7 @@ def run_game_engine(random_password):
             break
         else:
             chave = _read_user_attempt()          
-            resposta = _analyse_attempt(random_password, chave)
+            resposta = _analyse_attempt(random_password[:], chave[:])
             _show_results(resposta, attempt)
     else:
         if not found_password:
@@ -28,17 +28,13 @@ def _read_user_attempt():
     for order in range(1, 5):
         password = input(f'Insira a {order}ª chave: ')
         chave.append(password)
-    
     print(f'Sua combinação foi: {chave}')
-    
     return chave
 
 
 def _analyse_attempt(random_password, chave):
-    rand_pwd = random_password[:]
-    chv = chave[:]
-    return [PINO_PRETO for n in range(4) if is_colour_and_position_right(rand_pwd, chv, n)] + \
-           [PINO_BRANCO for n in range(4) if is_colour_right(rand_pwd, chv, n)]
+    return [PINO_PRETO for n in range(4) if is_colour_and_position_right(random_password, chave, n)] + \
+           [PINO_BRANCO for n in range(4) if is_colour_right(random_password, chave, n)]
 
 
 def is_colour_and_position_right(random_password, chave, position):
