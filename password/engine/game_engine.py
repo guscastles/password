@@ -37,11 +37,12 @@ def _analyse_attempt(random_password, chave):
     def is_colour_and_position_right(n):
         return random_password[n] == chave[n]
         
-    def is_colour_right(n):
-        return chave[n] in random_password and random_password[n] != chave[n]
-
     return [PINO_PRETO for n in range(4) if is_colour_and_position_right(n)] + \
-           [PINO_BRANCO for n in range(4) if is_colour_right(n)]
+           [PINO_BRANCO for n in range(4) if is_colour_right(random_password, chave, n)]
+
+
+def is_colour_right(random_password, chave, position):
+    return chave[position] in random_password and random_password[position] != chave[position]
 
 
 def _show_results(resposta, attempt):
